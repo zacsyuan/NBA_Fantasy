@@ -129,4 +129,4 @@ if selected_team != 'All':
 
 # Show table
 
-st.dataframe(filtered_df.reset_index(drop=True))
+st.dataframe(filtered_df)
