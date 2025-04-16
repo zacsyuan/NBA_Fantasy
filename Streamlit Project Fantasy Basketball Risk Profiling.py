@@ -6,13 +6,6 @@ import numpy as np
 
 
 
-
-
-
-
-
-
-
 #file_path = r'D:\MADS\Capstone\
 df_prep = pd.read_csv('2024-2025_NBA as of Apr.csv')
 
@@ -62,7 +55,8 @@ df_Features['INJ RISK'] = df_Features['risk_score'].apply(classify_risk)
 ####Dashboard Build
 
 
-st.title("🏀 NBA Player Injury Risk Dashboard as of Apr 9th_2024-25 Season")
+st.title("🏀 NBA Player Injury Risk Dashboard")
+st.subheader("📅 Data as of Apr 9th, 2024–25 Season")
 st.sidebar.header("🔍 Filter Panel")
 
 
