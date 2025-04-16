@@ -19,7 +19,11 @@ df_Features = df_Features.rename(columns={'TEAM_ABBREVIATION': 'TEAM'})
 #Standardize the feature values
 from sklearn.preprocessing import StandardScaler
 cols_to_scale = ['EXP', 'FGM', 'STL', 'PFD', 'AST']
+scaler = StandardScaler()
+df_scaled_values = scaler.fit_transform(df_Features[cols_to_scale])
 df_scaled = pd.DataFrame(df_scaled_values, columns=cols_to_scale, index=df_Features.index)
+df_Features_scaled = df_Features.copy()
+df_Features_scaled[cols_to_scale] = df_scaled
 
 #input the weight of the features computed by SHAP mean value
 weights = {
