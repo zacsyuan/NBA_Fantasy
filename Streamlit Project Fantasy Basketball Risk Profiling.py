@@ -113,7 +113,7 @@ selected_team = st.sidebar.selectbox(
 
 
 
-filtered_df = df_Features.copy().drop(columns=['risk_score'], inplace=True)
+filtered_df = df_Features.copy().drop(columns=['risk_score'])
 
 if selected_risk != 'All':
     filtered_df = filtered_df[filtered_df['INJ RISK'] == selected_risk]
