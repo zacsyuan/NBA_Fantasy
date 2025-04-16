@@ -15,6 +15,13 @@ df_Features['EXP'] = df_Features['EXP'].replace('R', 0.5)
 df_Features['EXP'] = pd.to_numeric(df_Features['EXP'], errors='coerce')
 df_Features = df_Features.rename(columns={'TEAM_ABBREVIATION': 'TEAM'})
 
+
+#Standardize the feature values
+from sklearn.preprocessing import StandardScaler
+cols_to_scale = ['EXP', 'FGM', 'STL', 'PFD', 'AST']
+df_scaled = pd.DataFrame(df_scaled_values, columns=cols_to_scale, index=df_Features.index)
+
+#input the weight of the features computed by SHAP mean value
 weights = {
     'EXP': 0.36,
     'FGM': 0.27,
@@ -23,23 +30,18 @@ weights = {
     'AST': 0.12
 }
 
-df_Features['risk_score'] = (
-    df_Features['EXP'] * weights['EXP'] +
-    df_Features['FGM'] * weights['FGM'] +
-    df_Features['STL'] * weights['STL'] +
-    df_Features['PFD'] * weights['PFD'] +
-    df_Features['AST'] * weights['AST']
+df_Features_scaled['risk_score'] = (
+    df_Features_scaled['EXP'] * weights['EXP'] +
+    df_Features_scaled['FGM'] * weights['FGM'] +
+    df_Features_scaled['STL'] * weights['STL'] +
+    df_Features_scaled['PFD'] * weights['PFD'] +
+    df_Features_scaled['AST'] * weights['AST']
 )
 
+mean = df_Features_scaled['risk_score'].mean()
+std = df_Features_scaled['risk_score'].std()
 
-# df_Features['injury_risk'] = pd.qcut(
-#     df_Features['risk_score'], 
-#     q=3, 
-#     labels=['Low', 'Medium', 'High']
-# )
 
-mean = df_Features['risk_score'].mean()
-std = df_Features['risk_score'].std()
 
 
 def classify_risk(score):
@@ -50,7 +52,7 @@ def classify_risk(score):
     else:
         return 'Medium'
 
-df_Features['INJ RISK'] = df_Features['risk_score'].apply(classify_risk)
+df_Features['INJ RISK'] = df_Features_scaled['risk_score'].apply(classify_risk)
 
 ####Dashboard Build
 
