@@ -49,12 +49,12 @@ std = df_Features_scaled['risk_score'].std()
 
 
 def classify_risk(score):
-    if score > mean + (std*2):
+    if score >= 1.0:
         return 'High'
-    elif score < mean -(std*2):
-        return 'Low'
-    else:
+    elif score >= -0.25:
         return 'Medium'
+    else:
+        return 'Low'
 
 df_Features['INJ RISK'] = df_Features_scaled['risk_score'].apply(classify_risk)
 
