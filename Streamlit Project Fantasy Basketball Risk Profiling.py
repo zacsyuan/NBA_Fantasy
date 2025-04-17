@@ -62,7 +62,7 @@ df_Features['INJ RISK'] = df_Features_scaled['risk_score'].apply(classify_risk)
 
 
 #st.title("🏀 NBA Player Injury Risk Dashboard!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-st.markdown("<h1 style='text-align: center;'>🏀 NBA Player Injury Risk Dashboard !!!!! TEST TEST</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>🏀 NBA Player Injury Risk Dashboard</h1>", unsafe_allow_html=True)
 st.markdown("**Data as of Apr 9th, 2024–25 Season**")
 st.sidebar.header("🔍 Filter Panel")
 
