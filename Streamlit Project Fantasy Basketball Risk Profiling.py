@@ -137,3 +137,25 @@ if selected_team != 'All':
 # Show table
 
 st.dataframe(filtered_df)
+
+
+# Calculate stats
+exp_stats = filtered_df['EXP'].agg(['mean', 'max', 'min'])
+fgm_stats = filtered_df['FGM'].agg(['mean', 'max', 'min'])
+stl_stats = filtered_df['STL'].agg(['mean', 'max', 'min'])
+pfd_stats = filtered_df['PFD'].agg(['mean', 'max', 'min'])
+ast_stats = filtered_df['AST'].agg(['mean', 'max', 'min'])
+
+# Format the note with 2 decimal places
+note_text = f"""
+<small><i>
+EXP – mean: {exp_stats['mean']:.2f}, max: {exp_stats['max']:.2f}, min: {exp_stats['min']:.2f}   |  
+FGM – mean: {fgm_stats['mean']:.2f}, max: {fgm_stats['max']:.2f}, min: {fgm_stats['min']:.2f}   |  
+STL – mean: {stl_stats['mean']:.2f}, max: {stl_stats['max']:.2f}, min: {stl_stats['min']:.2f}   |  
+PFD – mean: {pfd_stats['mean']:.2f}, max: {pfd_stats['max']:.2f}, min: {pfd_stats['min']:.2f}   |  
+AST – mean: {ast_stats['mean']:.2f}, max: {ast_stats['max']:.2f}, min: {ast_stats['min']:.2f}
+</i></small>
+"""
+
+# Display note
+st.markdown(note_text, unsafe_allow_html=True)
