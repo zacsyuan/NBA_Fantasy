@@ -2,7 +2,9 @@
 Capstone- NBA Player Injury Knowledge for NBA Fantasy Game Use
 
 ## 📁 Project Overview:
+Fantasy Basketball game is one of the most popular platforms for basketball enthusiasts to build and manage their own virtual teams, competing based on real-life player performances. A critical factor that influences a team’s success is player availability—once a player is injured, they contribute no stats, significantly impacting a fantasy team’s win rate. However predicting injuries is notoriously diffucult, leaving fantasy players/managers struggling to balance risk and reward when drafting their rosters. 
 
+In this project, we aim to identify useful risky factors and patterns to provide a guideline for fantasy players to quantify players’ injury risk. We connect each player’s seasonal performance metrics, including rebounds, blocks, minutes played, and player’s physical statistics, with their total game missed due to injury. We use both supervised and unsupervised machine learning methods, including XGBoost and DBSCAN, to explore which factors are most predictive of injury risk. Our project explores beyond known common sense, such as the more you play, the more likely you are to injure yourself. It uncovers some additional interesting patterns that contribute to injuries, for example, players with more assists may also be prone to have longer injury duration, because assists reflect high involvement in gameplay and workload. These insights can help fantasy players make more informed decisions, strategically selecting players who combine strong performance with lower injury risk.
 
 
 ### 1. `DBSCAN.ipynb`
