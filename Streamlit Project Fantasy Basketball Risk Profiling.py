@@ -7,7 +7,7 @@ import numpy as np
 
 
 #file_path = r'D:\MADS\Capstone\
-df_prep = pd.read_csv('2024-2025_NBA as of Apr.csv')
+df_prep = pd.read_csv("data/2024-2025_NBA as of Apr.csv")
 
 df_Features=df_prep[['PLAYER_NAME','POSITION','TEAM_ABBREVIATION','EXP','FGM','STL','PFD','AST']]
 df_Features=df_Features.dropna(subset=['EXP'])
